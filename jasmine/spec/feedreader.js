@@ -87,13 +87,16 @@ $(function() {
 
       /* Be sure tests run after loadFeed is completed */
         beforeEach(function(done) {
-          loadFeed(0, done); {
+          loadFeed(0, function() {
             feed = $('.feed').html();
-            loadFeed(1, function() {
-            newFeed = $('.feed').html();
+            console.log(feed);
+              loadFeed(1, function() {
+                newFeed = $('.feed').html();
+                done();
+            console.log(newFeed)
           });
-            done();
-          };
+
+        });
         });
 
       /* Check to make sure feed updates with "newFeed" content */
