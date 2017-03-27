@@ -89,24 +89,17 @@ $(function() {
         beforeEach(function(done) {
           loadFeed(0, done);
           feed = $('.feed').html();
+
           loadFeed(1, function() {
             newFeed = $('.feed').html();
             done();
           });
         });
-      });
 
+      /* Check to make sure feed updates with "newFeed" content */
         it('content updates', function() {
-          expect(feed).not.toBe.(newFeed);
+          expect(feed).not.toBe(newFeed);
         });
 
-
-
-
-        /* TODO: Write a test that ensures when a new feed is loaded
-         * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
-         */
-
-         });
+    });
 }());
