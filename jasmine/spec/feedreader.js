@@ -52,10 +52,8 @@ $(function() {
           expect($(document.body).hasClass('menu-hidden')).toBe(true);
         });
 
-         /* TODO: Write a test that ensures the menu changes
-          * visibility when the menu icon is clicked. This test
-          * should have two expectations: does the menu display when
-          * clicked and does it hide when clicked again.
+         /* Test that ensures the menu toggles
+          * visibility when the menu icon is clicked.
           */
 
         it('toggles visibility when hamburger clicked', function() {
@@ -66,16 +64,44 @@ $(function() {
           expect($(document.body).hasClass('menu-hidden')).toBe(true);
         });
 
-    /* TODO: Write a new test suite named "Initial Entries" */
+      });
 
-        /* TODO: Write a test that ensures when the loadFeed
-         * function is called and completes its work, there is at least
-         * a single .entry element within the .feed container.
-         * Remember, loadFeed() is asynchronous so this test will require
-         * the use of Jasmine's beforeEach and asynchronous done() function.
-         */
+    /* New test suite named "Initial Entries" */
+    describe('Initial Entries', function() {
 
-    /* TODO: Write a new test suite named "New Feed Selection"
+    /* Be sure tests run after loadFeed is completed */
+      beforeEach(function(done) {
+        loadFeed(0, done);
+      });
+
+    /* There is at least one single .entry element within the .feed container */
+      it('contains at least a single entry in feed container', function() {
+        expect($('.feed .entry').length).not.toBe(0);
+      });
+
+});
+    /* New test suite named "New Feed Selection" */
+    describe('New Feed Selection', function() {
+      var feed;
+      var newFeed;
+
+      /* Be sure tests run after loadFeed is completed */
+        beforeEach(function(done) {
+          loadFeed(0, done);
+          feed = $('.feed').html();
+          loadFeed(1, function() {
+            newFeed = $('.feed').html();
+            done();
+          });
+        });
+      });
+
+        it('content updates', function() {
+          expect(feed).not.toBe.(newFeed);
+        });
+
+
+
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
