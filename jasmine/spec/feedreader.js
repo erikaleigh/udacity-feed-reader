@@ -89,11 +89,11 @@ $(function() {
         beforeEach(function(done) {
           loadFeed(0, function() {
             feed = $('.feed').html();
-            console.log(feed);
+
               loadFeed(1, function() {
                 newFeed = $('.feed').html();
                 done();
-            console.log(newFeed)
+
           });
 
         });
@@ -102,6 +102,8 @@ $(function() {
       /* Check to make sure feed updates with "newFeed" content */
         it('content updates', function() {
           expect(feed).not.toBe(newFeed);
+          console.log(feed);
+          console.log(newFeed);
         });
 
     });
