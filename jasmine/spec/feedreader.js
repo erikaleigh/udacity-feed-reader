@@ -88,15 +88,13 @@ $(function() {
       /* Be sure tests run after loadFeed is completed */
         beforeEach(function(done) {
           loadFeed(0, done); {
-          feed = $('.feed').html();
-        }
-        if (feed != null)
-          loadFeed(1, function() {
+            feed = $('.feed').html();
+            loadFeed(1, function() {
             newFeed = $('.feed').html();
           });
-        if (newFeed != null)
             done();
-          });
+          };
+        });
 
       /* Check to make sure feed updates with "newFeed" content */
         it('content updates', function() {
