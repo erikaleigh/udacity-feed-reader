@@ -90,9 +90,11 @@ $(function() {
           loadFeed(0, done); {
           feed = $('.feed').html();
         }
+        if (feed != null)
           loadFeed(1, function() {
             newFeed = $('.feed').html();
           });
+        if (newFeed != null)
             done();
           });
 
